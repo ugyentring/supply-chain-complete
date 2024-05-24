@@ -64,7 +64,6 @@ const Product = () => {
   const [description, setDescription] = useState("");
   const [history, setHistory] = useState([]);
   const [isSold, setIsSold] = useState(false);
-  const [toUpdate, setToUpdate] = useState(false);
   const [image, setImage] = useState({
     file: [],
     filepreview: null,
@@ -119,9 +118,6 @@ const Product = () => {
 
           const product = await productContract.getProduct(data[1].toString());
 
-          // setProductData(product.toString())
-          // setToUpdate(true);
-
           console.log("Retrieved product...", product);
           setData(product.toString());
         } else {
@@ -142,7 +138,6 @@ const Product = () => {
     setName(arr[1]);
     setBrand(arr[2]);
     setDescription(arr[3].replace(/;/g, ","));
-    // setImage(arr[4]);
     getImage(arr[4]);
 
     const hist = [];
