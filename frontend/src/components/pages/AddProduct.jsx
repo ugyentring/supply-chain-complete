@@ -4,7 +4,6 @@ import { TextField, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import axios from "axios";
-// import abi from "../../utils/Identeefi.json";
 import QRCode from "qrcode.react";
 import dayjs from "dayjs";
 import useAuth from "../../hooks/useAuth";
@@ -14,13 +13,13 @@ import {
   contractAddress as CONTRACT_ADDRESS,
   contractABI,
 } from "../../utils/constants";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const notify = () => toast("Product added successfully");
 
 const getEthereumObject = () => window.ethereum;
 
-/*
- * This function returns the first linked account found.
- * If there is no account linked, it will return null.
- */
 const findMetaMaskAccount = async () => {
   try {
     const ethereum = getEthereumObject();
@@ -125,7 +124,6 @@ const AddProduct = () => {
   }, [manuLatitude, manuLongtitude]);
 
   const generateQRCode = async (serialNumber) => {
-    // const qrCode = await productContract.getProduct(serialNumber);
     const data = CONTRACT_ADDRESS + "," + serialNumber;
     setQrData(data);
     console.log("QR Code: ", qrData);
@@ -198,8 +196,6 @@ const AddProduct = () => {
           signer
         );
 
-        console.log("here");
-
         // write transactions
         const registerTxn = await productContract.registerProduct(
           name,
@@ -227,6 +223,7 @@ const AddProduct = () => {
       } else {
         console.log("Ethereum object doesn't exist!");
       }
+      notify();
     } catch (error) {
       console.log(error);
     }
@@ -500,6 +497,7 @@ const AddProduct = () => {
           </Box>
         </form>
       </Paper>
+      <ToastContainer />
     </Box>
   );
 };

@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ManageAccount = () => {
   const [rows, setRows] = useState([]);
@@ -49,6 +51,7 @@ const ManageAccount = () => {
     try {
       await axios.delete(`http://localhost:5000/profile/${username}`);
       fetchData();
+      toast.success("Profile deleted successfully!");
     } catch (error) {
       console.error("Failed to delete profile data:", error);
     }
@@ -157,6 +160,7 @@ const ManageAccount = () => {
           </Button>
         </Box>
       </Paper>
+      <ToastContainer />
     </Box>
   );
 };

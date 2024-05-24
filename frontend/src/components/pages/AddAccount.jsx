@@ -13,6 +13,7 @@ import bgImg from "../../img/bg.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const options = ["manufacturer", "supplier", "retailer"];
 
@@ -76,8 +77,6 @@ const AddAccount = () => {
     // for debugging only
     console.log("-----------------------------------");
     console.log("user: " + user);
-    // console.log("pwd: " + pwd);
-    // console.log("pwd2: " + pwd2);
     console.log("role: " + role);
     console.log("image: " + image.file.name);
     console.log("name: " + name);
@@ -136,6 +135,7 @@ const AddAccount = () => {
         file: [],
         filepreview: null,
       });
+      notify();
     } catch (err) {
       if (!err?.response) {
         setErrMsg("Server is down. Please try again later.");

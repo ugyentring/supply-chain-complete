@@ -56,19 +56,12 @@ const findMetaMaskAccount = async () => {
 
 const UpdateProduct = () => {
   const [currentAccount, setCurrentAccount] = useState("");
-  const [suppDate, setSuppDate] = useState("");
-  const [suppLatitude, setSuppLatitude] = useState("");
-  const [suppLongtitude, setSuppLongtitude] = useState("");
-  const [suppName, setSuppName] = useState("");
-  const [suppLocation, setSuppLocation] = useState("");
   const [loading, setLoading] = useState("");
   const [serialNumber, setSerialNumber] = useState("");
-  const [productData, setProductData] = useState("");
 
   const [name, setName] = useState("P");
   const [brand, setBrand] = useState("");
   const [description, setDescription] = useState("");
-  const [imageName, setImageName] = useState("");
   const [history, setHistory] = useState([]);
   const [isSold, setIsSold] = useState(false);
 

@@ -12,6 +12,8 @@ import {
   contractAddress as CONTRACT_ADDRESS,
   contractABI as CONTRACT_ABI,
 } from "../../utils/constants";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const options = ["true", "false"];
 
@@ -181,11 +183,13 @@ const UpdateProductDetails = () => {
 
         console.log("Retrieved product...", product);
         setLoading("Done! Product details updated successfully!");
+        toast.success("Product updated successfully!");
       } else {
         console.log("Ethereum object doesn't exist!");
       }
     } catch (error) {
       console.log(error);
+      toast.error("Product update failed!");
     }
   };
 
@@ -354,6 +358,7 @@ const UpdateProductDetails = () => {
           </Button>
         </Box>
       </Paper>
+      <ToastContainer />
     </Box>
   );
 };
